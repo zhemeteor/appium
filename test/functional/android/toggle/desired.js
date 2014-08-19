@@ -6,5 +6,7 @@ module.exports = {
   app: getAppPath('ToggleTest'),
   appPackage: 'com.example.toggletest',
   appActivity: '.MainActivity',
-  newCommandTimeout: 90
+  newCommandTimeout: 90,
+  platformName: 'Android',
+  platformVersion: '4.2'
 };
