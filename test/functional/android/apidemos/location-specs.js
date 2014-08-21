@@ -1,16 +1,17 @@
 "use strict";
 
 var setup = require("../../common/setup-base")
-  , desired = require("./desired");
+  , desired = require("./desired")
+  , _ = require('underscore');
 
-var desired = {
+/*var desired = {
   app: 'sample-code/apps/gps-demo/bin/GPSTutorial1.apk'
-};
+};*/
 
 // TODO: bring back when new wd is published with setGeoLocation
 describe("apidemo - location @skip-real-device", function () {
   var driver;
-  setup(this, desired).then(function (d) { driver = d; });
+  setup(this, _.defaults({ app: 'sample-code/apps/gps-demo/bin/GPSTutorial1.apk' }, desired)).then(function (d) { driver = d; });
 
   it('should set geo location', function (done) {
     var getText = function () { return driver.elementByXPath("//android.widget.TextView[2]").text(); };
