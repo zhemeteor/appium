@@ -52,6 +52,7 @@
 |`optionalIntentArguments`| Additional intent arguments that will be used to start activity. See [Intent arguments](http://developer.android.com/tools/help/adb.html#IntentSpec) | e.g. `--esn <EXTRA_KEY>`, `--ez <EXTRA_KEY> <EXTRA_BOOLEAN_VALUE>`, etc.
 |`unicodeKeyboard`| Enable Unicode input, default `false`| `true` or `false`|
 |`resetKeyboard`| Reset keyboard to its original state, after running Unicode tests with `unicodeKeyboard` capability. Ignored if used alone. Default `false`| `true` or `false`|
+|`noSign`| Skip checking and signing of app with debug keys, will work only with UiAutomator and not with selendroid, default `false`| `true` or `false`|
 
 ### iOS Only
 
@@ -60,7 +61,8 @@
 |Capability|Description|Values|
 |----|-----------|-------|
 |`calendarFormat`| (Sim-only) Calendar format to set for the iOS Simulator|e.g. `gregorian`|
-|`bundleId`| Bundle ID of the app under test. Useful for starting an app on a real device or for using other caps which require the bundle ID during test startup|e.g. `io.appium.TestApp`|
+|`bundleId`| Bundle ID of the app under test. Useful for starting an app on a real device or for using other caps which require the bundle ID during test startup. To run a test on a real device using the bundle ID, you may omit the 'app' capability, but you must provide 'udid'.|e.g. `io.appium.TestApp`|
+|`udid`| Unique device identifier of the connected physical device|e.g. `1ae203187fc012g`|
 |`launchTimeout`| Amount of time in ms to wait for instruments before assuming it hung and failing the session|e.g. `20000`|
 |`locationServicesEnabled`| (Sim-only) Force location services to be either on or off. Default is to keep current sim setting.|`true` or `false`|
 |`locationServicesAuthorized`| (Sim-only) Set location services to be authorized or not authorized for app via plist, so that location services alert doesn't pop up. Default is to keep current sim setting. Note that if you use this setting you MUST also use the `bundleId` capability to send in your app's bundle ID.|`true` or `false`|
@@ -74,3 +76,4 @@
 |`localizableStringsDir`| Where to look for localizable strings. Default `en.lproj`|`en.lproj`|
 |`processArguments`| Arguments to pass to the AUT using instruments|e.g., `-myflag`|
 |`interKeyDelay`| The delay, in ms, between keystrokes sent to an element when typing.|e.g., `100`|
+|`showIOSLog`| Whether to show any logs captured from a device in the appium logs. Default `false`|`true` or `false`|
