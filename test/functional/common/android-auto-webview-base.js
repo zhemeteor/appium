@@ -7,7 +7,9 @@ var env = require('../../helpers/env')
 var desired = {
   app: getAppPath('ApiDemos'),
   appActivity: '.view.WebView1',
-  autoWebview: true
+  autoWebview: true,
+  platformName: 'Android',
+  platformVersion: '4.2'
 };
 if (env.SELENDROID) {
   desired.automationName = 'selendroid';

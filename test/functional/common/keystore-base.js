@@ -17,7 +17,8 @@ module.exports = function () {
     appActivity: '.HomeScreenActivity',
     useKeystore: true,
     keystorePath: keystorePath,
-    keyAlias: keyAlias
+    keyAlias: keyAlias,
+    platformVersion: '4.2'
   };
   this.timeout(env.MOCHA_INIT_TIMEOUT);
 
