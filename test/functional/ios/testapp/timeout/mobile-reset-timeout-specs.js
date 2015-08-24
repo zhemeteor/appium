@@ -15,9 +15,12 @@ describe('testapp - timeout', function () {
       driver
         .setCommandTimeout(3000)
         .resetApp()
-        .sleep(6500)
-        .elementByName('dont exist dogg')
-          .should.be.rejectedWith(/status: (13|6)/)
+        .then(function () {
+          return driver
+            .sleep(6500)
+            .elementByName('dont exist dogg')
+              .should.be.rejectedWith(/status: (13|6)/);
+        })
         .nodeify(done);
     });
   });

@@ -21,7 +21,7 @@ describe('testapp - autoDismissAlerts cap = false', function () {
       .nodeify(done);
   });
 });
-
+/* TODO: validation is now preventing that
 describe('testapp - autoDismissAlerts cap = "false"', function () {
   var self = this;
   var driver;
@@ -39,3 +39,4 @@ describe('testapp - autoDismissAlerts cap = "false"', function () {
       .nodeify(done);
   });
 });
+*/

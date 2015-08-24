@@ -24,7 +24,7 @@ describe('uicatalog - reset @skip-ios6', function () {
       driver
         .closeApp()
         .elementsByClassName('UIATableView')
-          .should.eventually.be.rejectedWith('7')
+          .should.eventually.be.rejectedWith('6')
         .launchApp()
         .elementsByClassName('UIATableView')
           .should.eventually.have.length(1)

@@ -2,12 +2,14 @@
 
 var setup = require("../common/setup-base")
   , _ = require("underscore")
-  , getAppPath = require('../../helpers/app').getAppPath;
+  , path = require('path');
+//  , getAppPath = require('../../helpers/app').getAppPath;
 
+var appPath = path.resolve(__dirname, '../../..', 'sample-code/apps/TestApp/build/release-iphonesimulator/TestApp.app');
 describe('crash recovery @skip-real-device', function () {
   var driver;
   var desired = {
-    app: getAppPath('TestApp')
+    app: appPath
   };
 
   setup(this, desired, {}, {FAST_TESTS: false}).then(function (d) { driver = d; });
@@ -17,7 +19,7 @@ describe('crash recovery @skip-real-device', function () {
       .elementByAccessibilityId("Crash")
       .click()
       .then(function () {
-        return driver.sleep(30000);
+        return driver.sleep(5000);
       })
       .source() // will 404 because the session is gone
         .should.eventually.be.rejectedWith('6')
@@ -29,7 +31,7 @@ describe('crash commands @skip-real-device', function () {
 
   var driver;
   var desired = {
-    app: getAppPath('TestApp')
+    app: appPath
   };
 
   setup(this, desired, {}, {FAST_TESTS: false}).then(function (d) { driver = d; });

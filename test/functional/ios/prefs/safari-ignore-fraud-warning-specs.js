@@ -37,7 +37,8 @@ if (env.IOS6) {
     });
   });
 } else if (env.IOS7 || env.IOS8) {
-  describe('safari ios7/8 prefs @skip-ci', function () {
+  // TODO: waiting for safari
+  describe.skip('safari ios7/8 prefs @skip-ci', function () {
     // TODO modify the test to enable ci, right know it is checking a local file,
     // not gonna work with sauce
     var checkSafariSetting = require('./check-safari-settings').ios7up;

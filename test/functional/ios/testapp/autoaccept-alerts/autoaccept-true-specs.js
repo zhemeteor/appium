@@ -22,6 +22,7 @@ describe('testapp - autoAcceptAlerts cap = true', function () {
   });
 });
 
+/* TODO: validation now prevents that
 describe('testapp - autoAcceptAlerts cap = "true"', function () {
   var self = this;
   var driver;
@@ -39,3 +40,4 @@ describe('testapp - autoAcceptAlerts cap = "true"', function () {
       .nodeify(done);
   });
 });
+*/

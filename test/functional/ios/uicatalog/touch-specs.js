@@ -53,7 +53,7 @@ describe('uicatalog - touch @skip-ios6', function () {
       .click()
       .elementsByAccessibilityId('Increment')
         .then(function (els) {
-          els[2].getLocation()
+          return els[2].getLocation()
             .then(function (loc) {
               var action = new TouchAction(driver);
               action.tap({

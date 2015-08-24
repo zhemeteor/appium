@@ -4,12 +4,11 @@ var setup = require("../../../common/setup-base"),
     desired = require('../desired'),
     _ = require('underscore');
 
-describe('testapp - autoDismissAlerts cap = ""', function () {
+describe('testapp - default autoDismissAlerts cap', function () {
   var self = this;
   var driver;
 
   var caps = _.clone(desired);
-  caps.autoDismissAlerts = "";
   setup(self, caps).then(function (d) { driver = d; });
 
   it('does not auto-dismiss alerts', function (done) {

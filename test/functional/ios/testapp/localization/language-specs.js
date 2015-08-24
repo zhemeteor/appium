@@ -7,7 +7,7 @@ var env = require('../../../../helpers/env'),
     rimraf = require('rimraf'),
     path = require('path');
 
-describe('localization - language @skip-ios8', function () {
+describe('localization - language @skip-ios8 @skip-real-device', function () {
   this.timeout(env.MOCHA_INIT_TIMEOUT);
 
   after(function () {

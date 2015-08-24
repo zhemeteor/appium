@@ -22,6 +22,7 @@ describe('testapp - autoDismissAlerts cap = true', function () {
   });
 });
 
+/*
 describe('testapp - autoDismissAlerts cap = "true"', function () {
   var self = this;
   var driver;
@@ -39,3 +40,4 @@ describe('testapp - autoDismissAlerts cap = "true"', function () {
       .nodeify(done);
   });
 });
+*/

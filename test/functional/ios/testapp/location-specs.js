@@ -4,7 +4,8 @@ var setup = require("../../common/setup-base")
   , env = require('../../../helpers/env')
   , initSession = require('../../../helpers/session').initSession
   , _ = require("underscore")
-  , desired = require('./desired');
+  , desired = require('./desired')
+  , path = require('path');
 
 // TODO: location tests are not working well on sauce
 describe('testapp - location - 1 @skip-ci', function () {
@@ -99,11 +100,12 @@ describe('testapp - location - 5 @skip-ci', function () {
   _.extend(newDesired, {
     locationServicesAuthorized: true,
     bundleId: 'io.appium.TestApp',
-    app: 'assets/TestApp7.1.app.zip'
+    app: path.resolve(__dirname, '..', '..', '..', '..',
+      'assets', env.IOS8 || env.IOS9 ? 'TestApp8.app.zip' : 'TestApp7.1.app.zip')
   });
-  if (env.IOS8 || env.IOS9) {
-    newDesired.app = 'assets/TestApp8.app.zip';
-  }
+  //if (env.IOS8 || env.IOS9) {
+    //newDesired.app = 'assets/TestApp8.app.zip';
+  //}
 
   setup(this, newDesired, {'no-reset': true}).then(function (d) { driver = d; });
 

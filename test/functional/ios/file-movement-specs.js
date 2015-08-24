@@ -3,15 +3,8 @@
 var setup = require("../common/setup-base")
   , env = require('../../helpers/env')
   , getAppPath = require('sample-apps')
-  , fs = require('fs')
-  , path = require('path')
   , Readable = require('stream').Readable
-  , Simulator = require('../../../lib/devices/ios/simulator.js')
-  , xcode = require('../../../lib/future.js').xcode
-  , exec = require('child_process').exec
-  , getSimUdid = require('../../helpers/sim-udid.js').getSimUdid
-  , Unzip = require('unzip')
-  , _ = require('underscore');
+  , Unzip = require('unzip');
 
 describe('file movements - pullFile and pushFile @skip-real-device', function () {
   var driver;
@@ -61,64 +54,14 @@ describe('file movements - pullFile and pushFile @skip-real-device', function ()
 
   describe('for a .app @skip-ci', function () {
     // TODO: skipping ci because of local files use, to review.
-    var fileContent = "IAmTheVeryModelOfAModernMajorTestingTool";
-    var fileName = "someFile.tmp";
-    var fullPath = "";
-    var appPath = getAppPath('TestApp', env.REAL_DEVICE);
-    var appName = _.last(appPath.split(path.sep));
-
-    before(function (done) {
-      var pv = env.CAPS.platformVersion || '7.1';
-      var ios8 = parseFloat(pv) >= 8;
-      xcode.getMaxIOSSDK(function (err, sdk) {
-        if (err) return done(err);
-        var next = function (udid) {
-          var sim = new Simulator({
-            platformVer: pv,
-            sdkVer: sdk,
-            udid: udid
-          });
-          var simRoots = sim.getDirs();
-          if (simRoots.length < 1) {
-            return done(new Error("Didn't find any simulator directories"));
-          }
-          var basePath;
-          if (ios8) {
-            // ios8 apps are stored in a different directory structure, need
-            // to navigate down a few more here
-            basePath = path.resolve(simRoots[0], 'Containers', 'Bundle',
-                                       'Application');
-          } else {
-            basePath = path.resolve(simRoots[0], 'Applications');
-          }
-          basePath = basePath.replace(/\s/g, '\\ ');
-          var findCmd = 'find ' + basePath + ' -name "' + appName + '"';
-          exec(findCmd, function (err, stdout) {
-            if (err) return done(err);
-            if (!stdout) return done(new Error("Could not find", appName));
-            var appRoot = stdout.replace(/\n$/, '');
-            fullPath = path.resolve(appRoot, fileName);
-            fs.writeFile(fullPath, fileContent, done);
-          });
-        };
-        if (parseFloat(sdk) >= 8) {
-          getSimUdid('6', sdk, env.CAPS, function (err, udid) {
-            if (err) return done(err);
-            next(udid);
-          });
-        } else {
-          next();
-        }
-      });
-    });
+    var appName = 'TestApp-iphonesimulator.app';
 
     it('should be able to fetch a file from the app directory', function (done) {
-      var arg = path.resolve('/' + appName, fileName);
       driver
-        .pullFile(arg)
+        .pullFile('/' + appName + '/en.lproj/Localizable.strings')
         .then(function (data) {
           var stringData = new Buffer(data, 'base64').toString();
-          return stringData.should.equal(fileContent);
+          return stringData.should.include('computeSum');
         })
         .nodeify(done);
     });

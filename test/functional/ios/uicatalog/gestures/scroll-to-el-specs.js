@@ -2,8 +2,8 @@
 
 var setup = require("../../../common/setup-base")
   , desired = require('../desired');
-
-describe('uicatalog - gestures - scroll to el @skip-ios7 @skip-ios6', function () {
+// TODO: mobile: scrollTo removed
+describe.skip('uicatalog - gestures - scroll to el @skip-ios7 @skip-ios6', function () {
   var driver;
   setup(this, desired).then(function (d) { driver = d; });
 

@@ -4,12 +4,11 @@ var setup = require("../../../common/setup-base"),
     desired = require('../desired'),
     _ = require('underscore');
 
-describe('testapp - autoAcceptAlerts cap = ""', function () {
+describe('testapp - autoAcceptAlerts default', function () {
   var self = this;
   var driver;
 
   var caps = _.clone(desired);
-  caps.autoAcceptAlerts = "";
   setup(self, caps).then(function (d) { driver = d; });
 
   it('does not auto-accept alerts', function (done) {

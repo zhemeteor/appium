@@ -7,6 +7,7 @@ exports.okIfAlert = function (driver) {
       if (text) {
         return driver.acceptAlert();
       }
-    })
-    .catch(function () {});
+    });
+    // TODO: this catch looks wrong commenting
+    //.catch(function () {});
 };

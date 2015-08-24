@@ -2,7 +2,8 @@
 
 var setup = require("../../../common/setup-base");
 
-describe('uicatalog - load zipped app via url @skip-ios6', function () {
+// TODO: skipping on real device because we would need a signed app
+describe('uicatalog - load zipped app via url @skip-real-device @skip-ios6', function () {
   var driver;
   var appUrl = 'http://appium.s3.amazonaws.com/WebViewApp7.1.app.zip';
   setup(this, {app: appUrl})

@@ -13,7 +13,8 @@ describe('uicatalog - move @skip-ios6', function () {
     it('should be able to click on arbitrary x-y elements', function (done) {
       var axIdExt = env.IOS8 || env.IOS9 ? "" : ", AAPLButtonViewController";
       driver
-        .elementByAccessibilityId("Buttons" + axIdExt).moveTo(10, 10).click()
+        .elementByAccessibilityId("Buttons" + axIdExt).moveTo(10, 10)
+        .click('<')
         .elementByXPath("//UIAElement['SYSTEM (CONTACT ADD)']")
           .should.eventually.exist.should.eventually.exist
         .nodeify(done);

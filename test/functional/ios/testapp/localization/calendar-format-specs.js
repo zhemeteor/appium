@@ -6,8 +6,9 @@ var env = require('../../../../helpers/env'),
     _ = require('underscore'),
     rimraf = require('rimraf'),
     path = require('path');
-
-describe('localization - calendarFormat @skip-ios8', function () {
+// TODO: make sure localization is not supposed to work with real device
+//       same for other locaization tests
+describe('localization - calendarFormat @skip-ios8 @skip-real-device', function () {
   this.timeout(env.MOCHA_INIT_TIMEOUT);
 
   after(function () {

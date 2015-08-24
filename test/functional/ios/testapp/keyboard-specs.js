@@ -22,7 +22,8 @@ describe('testapp - keyboard', function () {
           .execute('env')
           .then( function (env) {
             if (strategy) env.sendKeyStrategy.should.equal(strategy);
-            else env.sendKeyStrategy.should.equal('oneByOne');
+            else env.sendKeyStrategy.should.equal(
+              process.env.REAL_DEVICE ? 'grouped' : 'oneByOne');
           })
           .elementByClassName('UIATextField')
             .clear()

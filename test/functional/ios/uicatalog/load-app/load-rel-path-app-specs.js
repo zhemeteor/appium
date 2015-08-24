@@ -5,7 +5,8 @@ var setup = require("../../../common/setup-base")
   , path = require('path')
   , _ = require('underscore');
 
-describe('uicatalog - load app with relative path @skip-ios6', function () {
+// TODO: figure out if we want thid in 1.5
+describe.skip('uicatalog - load app with relative path @skip-ios6', function () {
   var driver;
   var appPath = path.relative(process.cwd(), desired.app);
   setup(this, _.defaults({'app': appPath}, desired))
