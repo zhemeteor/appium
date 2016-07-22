@@ -40,7 +40,7 @@ Appium 的核心是一个 web 服务器，它提供了一套 REST 的接口。�
 的机器上。比如我们可以只写测试代码，然后使用像 [Sauce Labs](https://saucelabs.com/mobile) 这样的云服务来解释命令。
 
 **Session**<br/>
-自动化始终围绕一个session进行，客户端初始化一个seesion（会话）来与服务端交互，不同的语言有不同的实现方式，但是他们最终都是发送为一个POST请求给服务端，请求中包含一个JSON对象，被称作“desired capabilities”。此时，服务端就会开启一个自动化的 session，然后返回一个 session ID，session ID将会被用户发送后续的命令。
+自动化始终围绕一个session进行，客户端初始化一个session（会话）来与服务端交互，不同的语言有不同的实现方式，但是他们最终都是发送为一个POST请求给服务端，请求中包含一个JSON对象，被称作“desired capabilities”。此时，服务端就会开启一个自动化的 session，然后返回一个 session ID，session ID将会被用户发送后续的命令。
 
 **Desired Capabilities**<br/>
 Desired capabilities 是一些键值对的集合 (比如，一个 map 或者 hash），客户端将这些键值对发给服务端，告诉服务端我们想要怎么测试。比如，我们可以把`platformName` capability 设置为 `iOS`，告诉 Appium 服务端，我们想要一个iOS 的 session，而不是一个 Android 的。我们也可以设置 `safariAllowPopups` capability 为 `true`，确保在 Safari 自动化 session 中，我们可以使用 javascript 来打开新窗口。参见 [capabilities 文档](/docs/cn/writing-running-appium/caps.cn.md)，查看完整的 capabilities 列表。
